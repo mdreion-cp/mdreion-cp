@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+//par koreee dao
+ 
+const int MAX_N = 2e5 + 5;
+ 
+int digitsum[MAX_N];
+int prefixsum[MAX_N];
+ 
+void countt() {
+    for (int i = 1; i < MAX_N; ++i) {
+        int num = i;
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        digitsum[i] = sum;
+        prefixsum[i] = prefixsum[i-1] + digitsum[i];
+    }
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+ 
+    countt();
+ 
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        cout << prefixsum[n] <<endl;
+    }
+ 
+    return 0;
+}

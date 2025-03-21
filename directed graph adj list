@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+#include <list>
+
+using namespace std;
+
+class Graph {
+public:
+    int V; // Number of vertices
+    vector<list<int>> adjList; // Vector of lists for adjacency list representation
+
+    // Constructor
+    Graph(int vertices) {
+        V = vertices;
+        adjList.resize(V); // Resize the vector to hold V lists
+    }
+
+    // Function to add a directed edge from u to v
+    void addEdge(int u, int v) {
+        adjList[u].push_back(v); // Add v to the adjacency list of u (only one direction)
+    }
+
+    // Function to print the adjacency list
+    void printAdjList() {
+        for (int i = 0; i < V; i++) {
+            cout << i << ": ";
+            for (int v : adjList[i]) {
+                cout << v << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    Graph g(4); // Create a graph with 4 vertices
+
+    g.addEdge(0, 1); // Add directed edge from vertex 0 to vertex 1
+    g.addEdge(1, 2); // Add directed edge from vertex 1 to vertex 2
+    g.addEdge(2, 0); // Add directed edge from vertex 2 to vertex 0
+    g.addEdge(3, 1); // Add directed edge from vertex 3 to vertex 1
+
+    cout << "Adjacency List for Directed Graph:" << endl;
+    g.printAdjList();
+
+    return 0;
+}

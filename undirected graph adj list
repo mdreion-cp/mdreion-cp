@@ -119,3 +119,54 @@ int main() {
     return 0;
 }
 
+
+
+
+
+//by taking pair wise input from users 
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int v;
+	int e;
+	cin>>v>>e;
+	vector<pair<int,int>>points;
+	for(int i=0;i<e;i++)
+	{
+	    int x;
+	    int y;
+	    cin>>x;
+	    cin>>y;
+	    points.push_back(make_pair(x,y));
+	}
+	
+	unordered_map<int,vector<int>>adj;
+	for(auto vec : points)
+	{
+	    int u= vec.first;
+	    int v=vec.second;
+	    adj[u].push_back(v);
+	    adj[v].push_back(u);
+	}
+	
+	for(auto t : adj)
+	{
+	    cout<<t.first<<" : ";
+	    
+	    for(auto p : t.second)
+	    {
+	        cout<<p<< " ";
+	    }
+	    
+	    cout<<endl;
+	}
+
+}
+
+

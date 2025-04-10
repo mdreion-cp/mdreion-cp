@@ -1,0 +1,45 @@
+// multiset kivabe kaj kore mainly eta bujano hoise like kivabe first r last er element khuje ber korte hoiye,,,and pointer use korte hoi ,,and kivabe seta erase korte hoi sob process...its kind of differnt from others thats why make this note
+
+
+
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
+
+        multiset<int> st;
+        for (int i = 1; i <= n; i++) {
+            st.insert(i);
+        }
+
+        for (int i = 1; i <= n; i++) {
+            int val;
+            if (i % k == 0) {
+                // Pick minimum
+                auto it = st.begin();
+                val = *it;
+                cout << val << " ";
+                st.erase(it);
+            } else {
+                // Pick maximum
+                auto it = prev(st.end());
+                val = *it;
+                cout << val << " ";
+                st.erase(it);
+            }
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
